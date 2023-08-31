@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, Paper } from '@mui/material';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 
@@ -29,24 +29,28 @@ function Movie() {
       ) : (
         <div>
           <Header />
-          <Container>
+          <div className='movie-div'>
+          <Container className="movie-container">
             <Grid container spacing={3}>
               {movies.map((movie) => (
-                <Grid item xs={12} sm={6} md={6} lg={4}>
-                  <img src={movie.medium_cover_image} alt={movie.title} />
-                  <h2>
-                    <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
-                  </h2>
-                  <p>{movie.summary.length > 235 ? `${movie.summary.slice(0, 235)}...` : movie.summary}</p>
-                  <ul>
-                    {movie.genres.map((g) => (
-                      <li key={g}>{g}</li>
-                    ))}
-                  </ul>
+                <Grid item xs={12} sm={6} md={6} lg={4} >
+                  <Paper className="movie-paper">
+                    <img src={movie.medium_cover_image} alt={movie.title} />
+                    <h2>
+                      <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
+                    </h2>
+                    <p>{movie.summary.length > 200 ? `${movie.summary.slice(0, 200)}...` : movie.summary}</p>
+                    <ul>
+                      {movie.genres.map((g) => (
+                        <li key={g}>{g}　</li>
+                      ))}
+                    </ul>
+                  </Paper>
                 </Grid>
               ))}
             </Grid>
           </Container>
+          </div>
         </div>
       )}
     </div>
