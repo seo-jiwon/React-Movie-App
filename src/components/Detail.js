@@ -1,21 +1,42 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function Detail() {
     const { id } = useParams();
+    const [movies, setMovies] = useState([]);
 
     // id 값 이용하여 API로 부터 data fetch
     const getMovie = async () => {
         const json = await (
             await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
-            ).json();
-            console.log(json);
+        ).json();
+        console.log(json);
+        setMovies(json.data.movie);
     }
 
     useEffect(() => {
         getMovie();
     }, [])
-    return <h1>Detail</h1>;
+    console.log(movies);
+
+    return (
+        <div>
+            <h1>Detail</h1>
+            <div>
+                <img src={movies.medium_cover_image} alt={movies.title} />
+                <h2>{movies.title}</h2>
+                {/* <p>{movies.summary}</p> */}
+                {/* <ul>
+                    {movies.genres.map((g) => (
+                        <li key={g}>{g}</li>
+                    ))}
+                </ul> */}
+                <ul>
+                    <li>{movies.genres}</li>
+                </ul>
+            </div>
+        </div>
+    );
 }
 
 export default Detail;

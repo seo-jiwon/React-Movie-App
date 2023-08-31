@@ -1,19 +1,56 @@
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import { Container, Grid } from '@mui/material';
+import Header from '../components/Header';
+import Loading from '../components/Loading';
 
-function Movie({ id, coverImg, title, summary, genres }) {
-  return <div>
-    <img src={coverImg} alt={title} />
-    <h2>
-      <Link to={`/movie/${id}`}>{title}</Link>
-    </h2>
-    <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary}</p>
-    <ul>
-      {genres.map((g) => (
-        <li key={g}>{g}</li>
-      ))}
-    </ul>
-  </div>
+function Movie() {
+  const [loading, setLoading] = useState(true);
+  const [movies, setMovies] = useState([]);
+
+  const getMovies = async () => {
+    const json = await (
+      await fetch(`https://yts.mx/api/v2/list_movies.json?limit=12&sort_by=like_count`
+      )
+    ).json();
+    setMovies(json.data.movies);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getMovies();
+  }, []);
+
+  return (
+    <div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div>
+          <Header />
+          <Container>
+            <Grid container spacing={3}>
+              {movies.map((movie) => (
+                <Grid item xs={12} sm={6} md={6} lg={4}>
+                  <img src={movie.medium_cover_image} alt={movie.title} />
+                  <h2>
+                    <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
+                  </h2>
+                  <p>{movie.summary.length > 235 ? `${movie.summary.slice(0, 235)}...` : movie.summary}</p>
+                  <ul>
+                    {movie.genres.map((g) => (
+                      <li key={g}>{g}</li>
+                    ))}
+                  </ul>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </div>
+      )}
+    </div>
+  )
 }
 
 Movie.propTypes = {
