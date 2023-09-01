@@ -8,7 +8,7 @@ import Loading from '../components/Loading';
 function Movie() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
-
+  
   const getMovies = async () => {
     const json = await (
       await fetch(`https://yts.mx/api/v2/list_movies.json?limit=12&sort_by=like_count`

@@ -119,11 +119,41 @@ body {
   padding: 10px;
   margin: 0 0 10px 0;
 
-  // @media screen and (max-width: 500px) {
-  //   width: 400px;
-  //   margin-left: 7%;
-  // }
   @media screen and (max-width: 768px) {
     margin: 0 5% 0 5%;
+  }
+}
+
+.detail-div {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+.detail-container {
+  text-align: center;
+  margin: 10px;
+
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  li {
+    list-style: none;
+    display: inline-block;
+  }
+}
+
+.detail-paper {
+  height: calc(100vh - 100px);
+  padding: 10px;
+  margin: 0 0 10px 0;
+
+  @media screen and (max-width: 768px) {
+    margin: 0 5% 0 5%;
+    .detail-img {
+      width: 350px;
+    }
   }
 }
