@@ -1,18 +1,17 @@
-import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import Movie from './Movie';
 import { Container, Grid, Paper } from '@mui/material';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 
-function Movie() {
+function Genre({ genre }) {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
-  
+
   const getMovies = async () => {
     const json = await (
-      await fetch(`https://yts.mx/api/v2/list_movies.json?limit=12&sort_by=like_count`
-      )
+      await fetch(`https://yts.mx/api/v2/list_movies.json?genre=${genre}&sort_by=like_count`)
     ).json();
     setMovies(json.data.movies);
     setLoading(false);
@@ -21,6 +20,8 @@ function Movie() {
   useEffect(() => {
     getMovies();
   }, []);
+
+  console.log(movies);
 
   return (
     <div>
@@ -54,15 +55,7 @@ function Movie() {
         </div>
       )}
     </div>
-  )
+  );
 }
 
-Movie.propTypes = {
-  id: PropTypes.number.isRequired,
-  coverImg: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-}
-
-export default Movie;
+export default Genre;

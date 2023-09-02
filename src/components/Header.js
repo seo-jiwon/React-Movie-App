@@ -92,17 +92,17 @@ const Header = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to={"/sciencefiction"} className="nav-menu-list">
+                        <Link to={"/movie/sci-fi"} className="nav-menu-list">
                             SCIENCE FICTION
                         </Link>
                     </li>
                     <li>
-                        <Link to={"/animation"} className="nav-menu-list">
+                        <Link to={"/movie/animation"} className="nav-menu-list">
                             ANIMATION
                         </Link>
                     </li>
                     <li>
-                        <Link to={"/romance"} className="nav-menu-list">
+                        <Link to={"/movie/romance"} className="nav-menu-list">
                             ROMANCE
                         </Link>
                     </li>
