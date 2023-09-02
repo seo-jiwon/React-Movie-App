@@ -5,6 +5,7 @@
 body {
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
 }
 
 .movies {
@@ -126,14 +127,18 @@ body {
 
 .detail-div {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #000;
+  padding: 0 0 2% 0;
+
+  @media screen and (max-width: 768px) {
+    height: auto;
+  }
 }
 
 .detail-container {
-  text-align: center;
   margin: 10px;
-
+  
   a {
     text-decoration: none;
     color: #000;
@@ -146,14 +151,23 @@ body {
 }
 
 .detail-paper {
-  height: calc(100vh - 100px);
+  height: 100%;
   padding: 10px;
   margin: 0 0 10px 0;
 
   @media screen and (max-width: 768px) {
-    margin: 0 5% 0 5%;
+    text-align: center;
+    margin: 0 5% 0% 5%;
     .detail-img {
       width: 350px;
     }
+    .detail-intro1 {
+      float: none;
+    }
   }
+}
+
+.detail-intro1 {
+  float: left;
+  padding: 0 10px 10px 0;
 }

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Movie from './Movie';
 import { Container, Grid, Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -40,12 +39,12 @@ function Genre({ genre }) {
                     <h2>
                       <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
                     </h2>
-                    <p>{movie.summary.length > 200 ? `${movie.summary.slice(0, 200)}...` : movie.summary}</p>
                     <ul>
                       {movie.genres.map((g) => (
                         <li key={g}>{g}　</li>
                       ))}
                     </ul>
+                    <p>{movie.summary.length > 200 ? `${movie.summary.slice(0, 200)}...` : movie.summary}</p>
                   </Paper>
                 </Grid>
               ))}

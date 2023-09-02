@@ -16,6 +16,7 @@ function Detail() {
         ).json();
         console.log(json);
         setMovies(json.data.movie);
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -24,27 +25,39 @@ function Detail() {
 
     return (
         <div>
-            <Header />
-            <div className='detail-div'>
-                <Container className="detail-container">
-                    <Grid container spacing={3}>
-                        <Grid item xs={12}>
-                            <Paper className="detail-paper">
-                                <img className="detail-img" src={movies.large_cover_image} alt={movies.title} />
-                                <h2>{movies.title}</h2>
-                                <p>{movies.year} / {movies.runtime}min</p>
-                                <p>{movies.rating}</p>
-                                <ul>
-                                    {movies.genres && movies.genres.map((g) => (
-                                        <li key={g}>{g}　</li>
-                                    ))}
-                                </ul>
-                                <p>{movies.description_intro}</p>
-                            </Paper>
-                        </Grid>
-                    </Grid>
-                </Container>
-            </div>
+            {loading ? (
+                <Loading />
+            ) : (
+                <div>
+                    <Header />
+                    <div className='detail-div'>
+                        <Container className="detail-container">
+                            <Grid container spacing={3}>
+                                <Grid item xs={12}>
+                                    <Paper className="detail-paper">
+                                        <div className="detail-intro1">
+                                            <img className="detail-img" src={movies.large_cover_image} alt={movies.title} />
+                                        </div>
+                                        <div className="detail-intro2">
+                                            <h2>{movies.title}</h2>
+                                            <p>{movies.year} / {movies.runtime}min</p>
+                                            <p>★ {movies.rating}</p>
+                                            <ul>
+                                            {movies.genres && movies.genres.map((g) => (
+                                                <li key={g}>{g}　</li>
+                                            ))}
+                                            </ul>
+                                        </div>
+                                        <div className="detail-intro3">
+                                            <p>{movies.description_intro}</p>
+                                        </div>
+                                    </Paper>
+                                </Grid>
+                            </Grid>
+                        </Container>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
