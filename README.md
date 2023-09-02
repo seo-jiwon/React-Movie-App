@@ -53,4 +53,4 @@ $ npm start
 <br/>
 
 ## :page_facing_up: 테스트 환경
-- Chrome
+- Google Chrome
