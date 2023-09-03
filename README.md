@@ -50,7 +50,7 @@ $ npm start
 ## :eyes: 기능 설명
 기능|메인 페이지(PC)|메인 페이지(Mobile)|
 |------|---|---|
-|화면|<p align="center"><img width="700" src="https://github.com/seo-jiwon/React-Movie-App/assets/59152019/d978ac66-d4e0-4e0e-9a65-f63e90d00f98.gif"></p>|<p align="center"><img height="530" src="https://github.com/seo-jiwon/React-Movie-App/assets/59152019/5800ccaf-2972-4a6c-a49f-dc05ddb0f2e6.gif"></p>|
+|화면|<p align="center"><img src="https://github.com/seo-jiwon/React-Movie-App/assets/59152019/d978ac66-d4e0-4e0e-9a65-f63e90d00f98.gif"></p>|<p align="center"><img height="530" src="https://github.com/seo-jiwon/React-Movie-App/assets/59152019/5800ccaf-2972-4a6c-a49f-dc05ddb0f2e6.gif"></p>|
 |설명|인기있는 영화 12개를 애니메이션 효과를 통해 메인 페이지에서 확인할 수 있다.|모바일에서 반응형 헤더가 적용된 메인 페이지를 확인할 수 있다.|
 
 기능|장르별 페이지(PC) |장르별 페이지(Mobile)|
